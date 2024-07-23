@@ -5,4 +5,9 @@
  */
 export function uniq(arr) {
 
+    var MyArr = arr;
+
+    let uniqueItems = [...new Set(MyArr)];
+
+  return uniqueItems;
 }

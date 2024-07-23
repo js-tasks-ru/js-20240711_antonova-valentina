@@ -6,4 +6,19 @@
  */
 export function trimSymbols(string, size) {
 
+    var NewStr = "";
+
+    var str = "";
+
+    for (var i = 0; i < string.length ; i++) {
+
+        str = string[i] +  (string[i] === str[0] ? str : '')
+       
+        if (str.length > size) continue
+        NewStr += string[i]
+    }
+
+    return NewStr;
+ 
+
 }
