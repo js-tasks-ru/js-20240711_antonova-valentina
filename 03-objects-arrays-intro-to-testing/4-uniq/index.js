@@ -3,11 +3,8 @@
  * @param {*[]} arr - the array of primitive values
  * @returns {*[]} - the new array with uniq values
  */
-export function uniq(arr) {
+export function uniq(arr) { 
 
-    var MyArr = arr;
+    return [...new Set(arr)];
 
-    let uniqueItems = [...new Set(MyArr)];
-
-  return uniqueItems;
 }
