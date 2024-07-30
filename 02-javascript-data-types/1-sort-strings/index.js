@@ -5,18 +5,18 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-    const items = arr; 
-    const sort = param;
+  const items = arr; 
+  const sort = param;
 
-  const collator = new Intl.Collator('ru',{ caseFirst: "upper" });
+  const collator = new Intl.Collator('ru', { caseFirst: "upper" });
 
-    const sorted = [...items].sort((a, b) => {
-    if (sort=='desc'){
+  const sorted = [...items].sort((a, b) => {
+    if (sort == 'desc') {
     
-        return collator.compare(b, a);
+      return collator.compare(b, a);
     }
     return collator.compare(a, b);
- });
+  });
 
   return sorted;
 
