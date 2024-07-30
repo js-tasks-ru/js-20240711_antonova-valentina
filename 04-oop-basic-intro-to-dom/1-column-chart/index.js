@@ -50,19 +50,26 @@ export default class ColumnChart {
       
     }
 
+    createChartClasses() {
+        if (this.data.length) {
+           return "column-chart"; 
+        }
+        return "column-chart column-chart_loading";
+    }
+
     createTemplate() {
      return `  
-          <div class="column-chart" style="--chart-height: 50">
+          <div class="${this.createChartClasses()}" style="${this.chartHeight}">
           <div class="column-chart__title"> 
-          ${this.label} 
-          ${this.createLinkTemplate()}
+           ${this.label} 
+           ${this.createLinkTemplate()}
           </div>
-       <div class="column-chart__container">
-        <div data-element="header" class="column-chart__header">
-        ${this.formatHeading(this.value)}
-        </div>
-        <div data-element="body" class="column-chart__chart">
-        ${this.createChartTemplate()}
+          <div class="column-chart__container">
+          <div data-element="header" class="column-chart__header">
+           ${this.formatHeading(this.value)}
+          </div>
+          <div data-element="body" class="column-chart__chart">
+           ${this.createChartTemplate()}
          
         </div>
       </div>
@@ -77,18 +84,22 @@ export default class ColumnChart {
 
         element.innerHTML = this.createTemplate();
 
-        const firstElementChild = element.firstElementChild;
+      /*  const firstElementChild = element.firstElementChild;
 
         firstElementChild.classList.add('column-chart_loading');
         
-        return firstElementChild;
+        return firstElementChild;*/
+
+        return element.firstElementChild;
 
     }
 
     update (newData) {
         this.data = newData;
 
-        this.element.innerHTML = this.createTemplate(); 
+       // this.element.innerHTML = this.createTemplate(); 
+
+       this.element.querySelector('[data-element="body"]').innerHTML = this.createChartTemplate();
 
     }
 
