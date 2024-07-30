@@ -5,20 +5,20 @@ export default class NotificationMessage {
     timerId;
 
     constructor(       
-         message = '', {
-         type = 'success',        
-         duration = 1000
-         } = {})  {
+      message = '', {
+        type = 'success',        
+        duration = 1000
+      } = {}) {
 
-        this.message = message;
-        this.type = type;
-        this.duration = duration;
+      this.message = message;
+      this.type = type;
+      this.duration = duration;
 
-        this.element = this.createElement();  
-        } 
+      this.element = this.createElement();  
+    } 
 
-     createTemplate() {
-        return `
+    createTemplate() {
+      return `
         <div class="notification ${this.type}" style="--value:20s">
         <div class="timer"></div>
         <div class="inner-wrapper">
@@ -28,44 +28,44 @@ export default class NotificationMessage {
         </div>
         </div>
         </div>
-       `
+       `;
    
-       }
+    }
 
-     createElement() {
+    createElement() {
       
-        const element = document.createElement('div');
+      const element = document.createElement('div');
 
-        element.innerHTML = this.createTemplate();
+      element.innerHTML = this.createTemplate();
 
-        return element.firstElementChild;    
+      return element.firstElementChild;    
 
     }
 
-     show(container = document.body) {
+    show(container = document.body) {
 
-          if (NotificationMessage.lastShownComponent) {
+      if (NotificationMessage.lastShownComponent) {
 
-            NotificationMessage.lastShownComponent.remove();
-          }
-
-          NotificationMessage.lastShownComponent = this;         
-  
-          this.timerId = setTimeout(() => 
-           this.remove(), this.duration);
-          
-          container.append(this.element);
+        NotificationMessage.lastShownComponent.remove();
       }
+
+      NotificationMessage.lastShownComponent = this;         
+  
+      this.timerId = setTimeout(() => 
+        this.remove(), this.duration);
+          
+      container.append(this.element);
+    }
 
     remove() {
       if (this.timerId) {
-          clearTimeout(this.timerId);
-        }
-        this.element.remove();
+        clearTimeout(this.timerId);
       }
+      this.element.remove();
+    }
 
     destroy() {
-        this.remove();
+      this.remove();
     }
 
 }

@@ -5,22 +5,22 @@
  */
 export function createGetter(path) {
 
-   const fields = path.split('.'); 
+  const fields = path.split('.'); 
 
-     return (object) => {       
+  return (object) => {       
 
-       let result = object; 
+    let result = object; 
        
-       for (const field of fields) {
+    for (const field of fields) {
 
-        if (!result || !result.hasOwnProperty(field)) return;              
+      if (!result || !result.hasOwnProperty(field)) {return;}              
 
-       result = result[field];
+      result = result[field];
   
     }
   
     return result;
   
- }; 
+  }; 
 }
 

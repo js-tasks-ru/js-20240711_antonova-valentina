@@ -6,7 +6,7 @@
  */
 export const pick = (obj, ...fields) => {
 
- const mypick = {};
+  const mypick = {};
   for (const field of fields) {
    
     mypick[field] = obj[field];
@@ -14,6 +14,6 @@ export const pick = (obj, ...fields) => {
   }
   return mypick;
 
-//  const map = Object.fromEntries(Object.entries(mypick).map(([key, value]) => [key, value]) 
+  //  const map = Object.fromEntries(Object.entries(mypick).map(([key, value]) => [key, value]) 
 
 };

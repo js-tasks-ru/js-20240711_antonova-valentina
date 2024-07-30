@@ -6,19 +6,19 @@
  */
 export function trimSymbols(string, size) {
 
-    var NewStr = "";
+  let NewStr = "";
 
-    var str = "";
+  let str = "";
 
-    for (var i = 0; i < string.length ; i++) {
+  for (let i = 0; i < string.length ; i++) {
 
-        str = string[i] +  (string[i] === str[0] ? str : '')
+    str = string[i] + (string[i] === str[0] ? str : '');
        
-        if (str.length > size) continue
-        NewStr += string[i]
-    }
+    if (str.length > size) {continue;}
+    NewStr += string[i];
+  }
 
-    return NewStr;
+  return NewStr;
  
 
 }
